@@ -1,11 +1,13 @@
 name: interpreter
 
 up:
-  - go: 1.7.3
+  - go: 1.7.4
 
 commands:
   build:
     run: go get -t -d -v ./... && go build -v
+  get:
+    run: go get -t -d -v ./...
   test:
     run: go test -v -race ./...
 
