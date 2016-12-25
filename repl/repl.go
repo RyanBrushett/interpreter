@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/ryanbrushett/interpreter/evaluator"
 	"github.com/ryanbrushett/interpreter/lexer"
 	"github.com/ryanbrushett/interpreter/parser"
-	"github.com/ryanbrushett/interpreter/evaluator"
 )
 
 const PROMPT = ">> "
