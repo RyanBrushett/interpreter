@@ -274,10 +274,23 @@ func TestBuiltinFunctions(t *testing.T) {
 		expected interface{}
 	}{
 		{`len("")`, 0},
+		{`len([1, 2])`, 2},
 		{`len("four")`, 4},
 		{`len("hello world")`, 11},
 		{`len(1)`, "Argument not supported. Got INTEGER"},
 		{`len("one", "two")`, "Wrong number of arguments. Got 2, want 1"},
+		{`first([1, 2])`, 1},
+		{`first("banana")`, "Argument to `first` must be Array, got STRING"},
+		{`first([3, 1], [2, 3])`, "Wrong number of args. Need 1, got 2"},
+		{`last([1, 2])`, 2},
+		{`last("banana")`, "Argument to `last` must be Array, got STRING"},
+		{`last([3, 1], [2, 3])`, "Wrong number of args. Need 1, got 2"},
+		{`push([1, 2], 3)`, []int{1, 2, 3}},
+		{`push([1, 2], 3, 4)`, "Wrong number of args. Got 3, want 2"},
+		{`push(12, 4)`, "first arg to `push` must be an array, got INTEGER"},
+		{`rest([1, 2, 3])`, []int{2, 3}},
+		{`rest([1, 2], 3)`, "Wrong number of args. Need 1, got 2"},
+		{`rest(12)`, "Argument to `rest` must be Array, got INTEGER"},
 	}
 
 	for _, test := range tests {
